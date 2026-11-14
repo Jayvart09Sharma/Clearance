@@ -3,7 +3,9 @@
 **AI expense approval powered by Drex: decisions in milliseconds, not seconds.**
 
 > Drexathon 2026 · Track: **🦖 Apex Predator**
-> Built with **Intern** · **Drex** (System 1) · **NDI** · **DeepInfra** · **Keenable** · **Adobe Express / Firefly**
+> Built with **Drex** (System 1) · **DeepInfra** (Qwen explanations, DeepSeek-V3 baseline) · **Keenable**
+>
+> Status: receipts are read with pypdf (NDI client is wired in but was not enabled for the benchmark). Intern and Adobe assets were planned but not used in this build.
 
 Clearance reads a receipt or invoice (PDF, photo, scan or email), checks it against a company expense policy, and returns **Approve / Flag / Reject** with a calibrated confidence for every check, in milliseconds.
 
