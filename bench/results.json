@@ -1,0 +1,1963 @@
+{
+  "meta": {
+    "generated_at": "2026-11-14T14:24:35",
+    "n_receipts": 37,
+    "drex_model": "drex-latest",
+    "baseline_model": "deepseek-ai/DeepSeek-V3",
+    "mock": false
+  },
+  "summary": {
+    "drex": {
+      "n": 37,
+      "decision_accuracy": 1.0,
+      "category_accuracy": 0.972972972972973,
+      "violation_recall": 1.0,
+      "violations_planted": 15,
+      "violations_caught": 15,
+      "false_alarm_rate": 0.0,
+      "latency_median_ms": 325.9177000145428,
+      "latency_p95_ms": 526.318059983896,
+      "parse_failures": 0,
+      "errors": 0,
+      "cost_per_1k_usd": null,
+      "server_median_ms": 177.6,
+      "tokens_in_total": 24932,
+      "tokens_out_total": 22947
+    },
+    "baseline": {
+      "n": 37,
+      "decision_accuracy": 0.918918918918919,
+      "category_accuracy": 0.972972972972973,
+      "violation_recall": 0.8666666666666667,
+      "violations_planted": 15,
+      "violations_caught": 13,
+      "false_alarm_rate": 0.043478260869565216,
+      "latency_median_ms": 2486.989500001073,
+      "latency_p95_ms": 5181.9132400036315,
+      "parse_failures": 0,
+      "errors": 0,
+      "cost_per_1k_usd": null,
+      "server_median_ms": null,
+      "tokens_in_total": 25308,
+      "tokens_out_total": 2752
+    }
+  },
+  "headline": {
+    "speedup": 7.630728554755083
+  },
+  "labels": [
+    {
+      "file": "r01_blue_bottle.pdf",
+      "expected_decision": "approve",
+      "expected_category": "meals",
+      "violations": ""
+    },
+    {
+      "file": "r02_uber.pdf",
+      "expected_decision": "approve",
+      "expected_category": "travel",
+      "violations": ""
+    },
+    {
+      "file": "r03_marriott.pdf",
+      "expected_decision": "approve",
+      "expected_category": "travel",
+      "violations": ""
+    },
+    {
+      "file": "r04_delta_flight.pdf",
+      "expected_decision": "approve",
+      "expected_category": "travel",
+      "violations": ""
+    },
+    {
+      "file": "r05_shell.pdf",
+      "expected_decision": "approve",
+      "expected_category": "travel",
+      "violations": ""
+    },
+    {
+      "file": "r06_sfo_parking.pdf",
+      "expected_decision": "approve",
+      "expected_category": "travel",
+      "violations": ""
+    },
+    {
+      "file": "r07_notion.pdf",
+      "expected_decision": "approve",
+      "expected_category": "software",
+      "violations": ""
+    },
+    {
+      "file": "r08_github.pdf",
+      "expected_decision": "approve",
+      "expected_category": "software",
+      "violations": ""
+    },
+    {
+      "file": "r09_figma.pdf",
+      "expected_decision": "approve",
+      "expected_category": "software",
+      "violations": ""
+    },
+    {
+      "file": "r10_aws.pdf",
+      "expected_decision": "approve",
+      "expected_category": "software",
+      "violations": ""
+    },
+    {
+      "file": "r11_staples.pdf",
+      "expected_decision": "approve",
+      "expected_category": "office",
+      "violations": ""
+    },
+    {
+      "file": "r12_ikea.pdf",
+      "expected_decision": "approve",
+      "expected_category": "office",
+      "violations": ""
+    },
+    {
+      "file": "r13_office_depot.pdf",
+      "expected_decision": "approve",
+      "expected_category": "office",
+      "violations": ""
+    },
+    {
+      "file": "r14_chipotle.pdf",
+      "expected_decision": "approve",
+      "expected_category": "meals",
+      "violations": ""
+    },
+    {
+      "file": "r15_sweetgreen.pdf",
+      "expected_decision": "approve",
+      "expected_category": "meals",
+      "violations": ""
+    },
+    {
+      "file": "r16_doordash.pdf",
+      "expected_decision": "approve",
+      "expected_category": "meals",
+      "violations": ""
+    },
+    {
+      "file": "r17_lyft.pdf",
+      "expected_decision": "approve",
+      "expected_category": "travel",
+      "violations": ""
+    },
+    {
+      "file": "r18_amtrak.pdf",
+      "expected_decision": "approve",
+      "expected_category": "travel",
+      "violations": ""
+    },
+    {
+      "file": "r19_zoom.eml",
+      "expected_decision": "approve",
+      "expected_category": "software",
+      "violations": ""
+    },
+    {
+      "file": "r20_fedex_office.pdf",
+      "expected_decision": "approve",
+      "expected_category": "other",
+      "violations": ""
+    },
+    {
+      "file": "r21_dinner_wine.pdf",
+      "expected_decision": "reject",
+      "expected_category": "meals",
+      "violations": "non_reimbursable;over_limit"
+    },
+    {
+      "file": "r22_best_buy.pdf",
+      "expected_decision": "approve",
+      "expected_category": "office",
+      "violations": ""
+    },
+    {
+      "file": "r23_hilton.pdf",
+      "expected_decision": "approve",
+      "expected_category": "travel",
+      "violations": ""
+    },
+    {
+      "file": "r24_steakhouse_over.pdf",
+      "expected_decision": "flag",
+      "expected_category": "meals",
+      "violations": "over_limit"
+    },
+    {
+      "file": "r25_hilton_over.pdf",
+      "expected_decision": "flag",
+      "expected_category": "travel",
+      "violations": "over_limit"
+    },
+    {
+      "file": "r26_monitor_over.pdf",
+      "expected_decision": "flag",
+      "expected_category": "office",
+      "violations": "over_limit"
+    },
+    {
+      "file": "r27_uber_duplicate.pdf",
+      "expected_decision": "reject",
+      "expected_category": "travel",
+      "violations": "duplicate"
+    },
+    {
+      "file": "r28_notion_duplicate.pdf",
+      "expected_decision": "reject",
+      "expected_category": "software",
+      "violations": "duplicate"
+    },
+    {
+      "file": "r29_weekend_lunch.pdf",
+      "expected_decision": "flag",
+      "expected_category": "meals",
+      "violations": "weekend"
+    },
+    {
+      "file": "r30_holiday_lunch.pdf",
+      "expected_decision": "flag",
+      "expected_category": "meals",
+      "violations": "weekend"
+    },
+    {
+      "file": "r31_fake_vendor.pdf",
+      "expected_decision": "flag",
+      "expected_category": "other",
+      "violations": "fake_vendor"
+    },
+    {
+      "file": "r32_fake_vendor.pdf",
+      "expected_decision": "flag",
+      "expected_category": "office",
+      "violations": "fake_vendor"
+    },
+    {
+      "file": "r33_blurred_total.pdf",
+      "expected_decision": "flag",
+      "expected_category": "office",
+      "violations": "missing_info"
+    },
+    {
+      "file": "r34_no_items.pdf",
+      "expected_decision": "flag",
+      "expected_category": "meals",
+      "violations": "missing_info"
+    },
+    {
+      "file": "r35_tobacco.pdf",
+      "expected_decision": "reject",
+      "expected_category": "other",
+      "violations": "non_reimbursable"
+    },
+    {
+      "file": "r36_gift_card.pdf",
+      "expected_decision": "reject",
+      "expected_category": "other",
+      "violations": "non_reimbursable"
+    },
+    {
+      "file": "r37_peets.pdf",
+      "expected_decision": "approve",
+      "expected_category": "meals",
+      "violations": ""
+    }
+  ],
+  "rows": {
+    "drex": [
+      {
+        "file": "r01_blue_bottle.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "meals",
+        "latency_ms": 305.4120999877341,
+        "server_ms": 125.4,
+        "usage": {
+          "input_tokens": 679,
+          "output_tokens": 620
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r02_uber.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 253.41370000387542,
+        "server_ms": 134.9,
+        "usage": {
+          "input_tokens": 670,
+          "output_tokens": 626
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r03_marriott.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 333.4708999900613,
+        "server_ms": 169.6,
+        "usage": {
+          "input_tokens": 675,
+          "output_tokens": 623
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r04_delta_flight.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 490.176799998153,
+        "server_ms": 336.9,
+        "usage": {
+          "input_tokens": 679,
+          "output_tokens": 629
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r05_shell.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 364.16779999854043,
+        "server_ms": 227,
+        "usage": {
+          "input_tokens": 665,
+          "output_tokens": 622
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r06_sfo_parking.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 293.884499988053,
+        "server_ms": 133.7,
+        "usage": {
+          "input_tokens": 662,
+          "output_tokens": 617
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r07_notion.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "software",
+        "latency_ms": 368.7767000228632,
+        "server_ms": 209.8,
+        "usage": {
+          "input_tokens": 666,
+          "output_tokens": 619
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r08_github.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "software",
+        "latency_ms": 261.20159999118187,
+        "server_ms": 137.1,
+        "usage": {
+          "input_tokens": 663,
+          "output_tokens": 620
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r09_figma.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "software",
+        "latency_ms": 249.7721000108868,
+        "server_ms": 126.9,
+        "usage": {
+          "input_tokens": 665,
+          "output_tokens": 622
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r10_aws.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "software",
+        "latency_ms": 258.7894999887794,
+        "server_ms": 130,
+        "usage": {
+          "input_tokens": 676,
+          "output_tokens": 623
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r11_staples.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "office",
+        "latency_ms": 318.7585000123363,
+        "server_ms": 177.6,
+        "usage": {
+          "input_tokens": 696,
+          "output_tokens": 625
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r12_ikea.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "office",
+        "latency_ms": 605.0770999863744,
+        "server_ms": 486.4,
+        "usage": {
+          "input_tokens": 671,
+          "output_tokens": 625
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r13_office_depot.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "office",
+        "latency_ms": 518.8292999810074,
+        "server_ms": 389.3,
+        "usage": {
+          "input_tokens": 672,
+          "output_tokens": 620
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r14_chipotle.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "meals",
+        "latency_ms": 325.9177000145428,
+        "server_ms": 177.2,
+        "usage": {
+          "input_tokens": 693,
+          "output_tokens": 625
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r15_sweetgreen.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "meals",
+        "latency_ms": 454.4840000162367,
+        "server_ms": 180,
+        "usage": {
+          "input_tokens": 667,
+          "output_tokens": 623
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r16_doordash.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "meals",
+        "latency_ms": 256.67000000248663,
+        "server_ms": 134.5,
+        "usage": {
+          "input_tokens": 678,
+          "output_tokens": 625
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r17_lyft.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 382.0705999969505,
+        "server_ms": 156.5,
+        "usage": {
+          "input_tokens": 669,
+          "output_tokens": 625
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r18_amtrak.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 350.9765999915544,
+        "server_ms": 233.8,
+        "usage": {
+          "input_tokens": 659,
+          "output_tokens": 613
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r19_zoom.eml",
+        "decision": "approve",
+        "reasons": [],
+        "category": "software",
+        "latency_ms": 305.41440000524744,
+        "server_ms": 169,
+        "usage": {
+          "input_tokens": 659,
+          "output_tokens": 624
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r20_fedex_office.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "office",
+        "latency_ms": 381.44550001015887,
+        "server_ms": 247.6,
+        "usage": {
+          "input_tokens": 679,
+          "output_tokens": 624
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r21_dinner_wine.pdf",
+        "decision": "reject",
+        "reasons": [
+          "Contains non-reimbursable items",
+          "Over category limit"
+        ],
+        "category": "meals",
+        "latency_ms": 289.6828999801073,
+        "server_ms": 173.8,
+        "usage": {
+          "input_tokens": 686,
+          "output_tokens": 612
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": true,
+          "non_reimbursable": true,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r22_best_buy.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "office",
+        "latency_ms": 556.273099995451,
+        "server_ms": 402.8,
+        "usage": {
+          "input_tokens": 673,
+          "output_tokens": 623
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r23_hilton.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 314.2299000173807,
+        "server_ms": 173.6,
+        "usage": {
+          "input_tokens": 674,
+          "output_tokens": 622
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r24_steakhouse_over.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Over category limit"
+        ],
+        "category": "meals",
+        "latency_ms": 318.9884000166785,
+        "server_ms": 201.8,
+        "usage": {
+          "input_tokens": 701,
+          "output_tokens": 614
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": true,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r25_hilton_over.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Over category limit"
+        ],
+        "category": "travel",
+        "latency_ms": 330.98700002301484,
+        "server_ms": 221,
+        "usage": {
+          "input_tokens": 674,
+          "output_tokens": 621
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": true,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r26_monitor_over.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Over category limit"
+        ],
+        "category": "office",
+        "latency_ms": 279.33560000383295,
+        "server_ms": 143.8,
+        "usage": {
+          "input_tokens": 673,
+          "output_tokens": 608
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": true,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r27_uber_duplicate.pdf",
+        "decision": "reject",
+        "reasons": [
+          "Looks like a duplicate submission"
+        ],
+        "category": "travel",
+        "latency_ms": 516.3838000153191,
+        "server_ms": 279.8,
+        "usage": {
+          "input_tokens": 670,
+          "output_tokens": 616
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": true,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r28_notion_duplicate.pdf",
+        "decision": "reject",
+        "reasons": [
+          "Looks like a duplicate submission"
+        ],
+        "category": "software",
+        "latency_ms": 326.1720000009518,
+        "server_ms": 213.7,
+        "usage": {
+          "input_tokens": 665,
+          "output_tokens": 618
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": true,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r29_weekend_lunch.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Weekend or holiday purchase"
+        ],
+        "category": "meals",
+        "latency_ms": 395.8468000055291,
+        "server_ms": 255.3,
+        "usage": {
+          "input_tokens": 679,
+          "output_tokens": 620
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": true,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r30_holiday_lunch.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Weekend or holiday purchase"
+        ],
+        "category": "meals",
+        "latency_ms": 309.6642000018619,
+        "server_ms": 177.3,
+        "usage": {
+          "input_tokens": 681,
+          "output_tokens": 620
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": true,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r31_fake_vendor.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Vendor could not be verified"
+        ],
+        "category": "other",
+        "latency_ms": 282.5783000153024,
+        "server_ms": 157.8,
+        "usage": {
+          "input_tokens": 671,
+          "output_tokens": 612
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": true
+        }
+      },
+      {
+        "file": "r32_fake_vendor.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Vendor could not be verified"
+        ],
+        "category": "office",
+        "latency_ms": 372.7532000048086,
+        "server_ms": 185.3,
+        "usage": {
+          "input_tokens": 676,
+          "output_tokens": 622
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": true
+        }
+      },
+      {
+        "file": "r33_blurred_total.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Missing required information"
+        ],
+        "category": "office",
+        "latency_ms": 281.7436000041198,
+        "server_ms": 143.7,
+        "usage": {
+          "input_tokens": 675,
+          "output_tokens": 615
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": true,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r34_no_items.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Missing required information"
+        ],
+        "category": "meals",
+        "latency_ms": 381.29039999330416,
+        "server_ms": 186.3,
+        "usage": {
+          "input_tokens": 662,
+          "output_tokens": 616
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": true,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r35_tobacco.pdf",
+        "decision": "reject",
+        "reasons": [
+          "Contains non-reimbursable items"
+        ],
+        "category": "other",
+        "latency_ms": 314.6259000059217,
+        "server_ms": 210.3,
+        "usage": {
+          "input_tokens": 682,
+          "output_tokens": 620
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": true,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r36_gift_card.pdf",
+        "decision": "reject",
+        "reasons": [
+          "Contains non-reimbursable items"
+        ],
+        "category": "other",
+        "latency_ms": 427.83470000722446,
+        "server_ms": 322.1,
+        "usage": {
+          "input_tokens": 667,
+          "output_tokens": 614
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": true,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r37_peets.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "meals",
+        "latency_ms": 283.0627999792341,
+        "server_ms": 168.2,
+        "usage": {
+          "input_tokens": 680,
+          "output_tokens": 624
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      }
+    ],
+    "baseline": [
+      {
+        "file": "r01_blue_bottle.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "meals",
+        "latency_ms": 14140.64430000144,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 690,
+          "completion_tokens": 75
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r02_uber.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 5138.145200005965,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 681,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r03_marriott.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 5356.985399994301,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 684,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r04_delta_flight.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 3117.279000027338,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 687,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r05_shell.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 3381.5109000133816,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 675,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r06_sfo_parking.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 2287.8033999877516,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 674,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r07_notion.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "software",
+        "latency_ms": 2184.8740999994334,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 678,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r08_github.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "software",
+        "latency_ms": 2789.9755999969784,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 674,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r09_figma.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "software",
+        "latency_ms": 2272.884800011525,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 674,
+          "completion_tokens": 78
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r10_aws.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "software",
+        "latency_ms": 2455.6423999893013,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 684,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r11_staples.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "office",
+        "latency_ms": 2790.641699975822,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 703,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r12_ikea.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Over category limit"
+        ],
+        "category": "office",
+        "latency_ms": 2770.855999988271,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 680,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": true,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r13_office_depot.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "office",
+        "latency_ms": 3158.922900009202,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 681,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r14_chipotle.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "meals",
+        "latency_ms": 3159.9691000010353,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 703,
+          "completion_tokens": 75
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r15_sweetgreen.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "meals",
+        "latency_ms": 2498.2204000116326,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 678,
+          "completion_tokens": 75
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r16_doordash.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "meals",
+        "latency_ms": 1961.9505000009667,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 688,
+          "completion_tokens": 75
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r17_lyft.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 2653.772999998182,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 681,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r18_amtrak.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 3329.1063999931794,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 671,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r19_zoom.eml",
+        "decision": "approve",
+        "reasons": [],
+        "category": "software",
+        "latency_ms": 3098.4656999935396,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 671,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r20_fedex_office.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "office",
+        "latency_ms": 2692.7831000066362,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 689,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r21_dinner_wine.pdf",
+        "decision": "reject",
+        "reasons": [
+          "Contains non-reimbursable items",
+          "Over category limit"
+        ],
+        "category": "meals",
+        "latency_ms": 2722.499499999685,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 695,
+          "completion_tokens": 75
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": true,
+          "non_reimbursable": true,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r22_best_buy.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "office",
+        "latency_ms": 2486.989500001073,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 682,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r23_hilton.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 2842.5597000168636,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 682,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r24_steakhouse_over.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Over category limit"
+        ],
+        "category": "meals",
+        "latency_ms": 2387.646599992877,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 706,
+          "completion_tokens": 75
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": true,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r25_hilton_over.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Over category limit"
+        ],
+        "category": "travel",
+        "latency_ms": 2111.978700006148,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 682,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": true,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r26_monitor_over.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Over category limit"
+        ],
+        "category": "office",
+        "latency_ms": 2058.705200004624,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 681,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": true,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r27_uber_duplicate.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "travel",
+        "latency_ms": 2312.2450999799185,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 681,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r28_notion_duplicate.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "software",
+        "latency_ms": 2740.86609997903,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 677,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r29_weekend_lunch.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Weekend or holiday purchase"
+        ],
+        "category": "meals",
+        "latency_ms": 2183.2354000071064,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 689,
+          "completion_tokens": 75
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": true,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r30_holiday_lunch.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Weekend or holiday purchase"
+        ],
+        "category": "meals",
+        "latency_ms": 1675.5892999935895,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 692,
+          "completion_tokens": 75
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": true,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r31_fake_vendor.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Over category limit",
+          "Vendor could not be verified"
+        ],
+        "category": "other",
+        "latency_ms": 2167.0807000191417,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 683,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": true,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": true
+        }
+      },
+      {
+        "file": "r32_fake_vendor.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Vendor could not be verified"
+        ],
+        "category": "office",
+        "latency_ms": 1863.1967999972403,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 684,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": true
+        }
+      },
+      {
+        "file": "r33_blurred_total.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Missing required information"
+        ],
+        "category": "office",
+        "latency_ms": 1911.6962999978568,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 691,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": true,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r34_no_items.pdf",
+        "decision": "flag",
+        "reasons": [
+          "Missing required information"
+        ],
+        "category": "meals",
+        "latency_ms": 2486.925400007749,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 675,
+          "completion_tokens": 75
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": true,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r35_tobacco.pdf",
+        "decision": "reject",
+        "reasons": [
+          "Contains non-reimbursable items"
+        ],
+        "category": "other",
+        "latency_ms": 2173.6171999946237,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 693,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": true,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r36_gift_card.pdf",
+        "decision": "reject",
+        "reasons": [
+          "Contains non-reimbursable items"
+        ],
+        "category": "other",
+        "latency_ms": 2214.50889998232,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 678,
+          "completion_tokens": 74
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": true,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      },
+      {
+        "file": "r37_peets.pdf",
+        "decision": "approve",
+        "reasons": [],
+        "category": "meals",
+        "latency_ms": 2301.846399990609,
+        "server_ms": null,
+        "usage": {
+          "prompt_tokens": 691,
+          "completion_tokens": 75
+        },
+        "parse_failure": false,
+        "error": null,
+        "caught": {
+          "over_limit": false,
+          "non_reimbursable": false,
+          "duplicate": false,
+          "missing_info": false,
+          "weekend": false,
+          "fake_vendor": false
+        }
+      }
+    ]
+  }
+}

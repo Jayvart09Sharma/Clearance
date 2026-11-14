@@ -1,0 +1,19 @@
+From: Zoom Billing <billing@example.com>
+To: employee@example.com
+Subject: Your Zoom invoice
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+Zoom
+Zoom Video Communications, San Jose CA
+INVOICE
+Date: 2026-11-02
+----------------------------------------
+1 x Pro plan monthly               15.99
+----------------------------------------
+Subtotal                           15.99
+TOTAL USD                          15.99
+
+Paid: VISA ending 4417
+Thank you!

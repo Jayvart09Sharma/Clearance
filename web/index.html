@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clearance · Expenses, cleared.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand">Clearance</a>
+    <div class="nav-links"><a href="/" class="active">Review</a><a href="/benchmark">Benchmark</a></div>
+  </div>
+</nav>
+
+<main>
+  <!-- 1. Home / Upload -->
+  <div class="glow" aria-hidden="true"><span class="g1"></span><span class="g2"></span><span class="g3"></span></div>
+  <section id="home" class="screen wrap text-center">
+    <p class="eyebrow">AI expense approval · powered by Drex</p>
+    <h1 class="hero">Expenses, cleared.</h1>
+    <p class="sub">Every receipt checked in milliseconds.</p>
+
+    <label id="drop" class="drop" for="file">
+      <input id="file" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,.eml,.txt" hidden />
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="m6 10 6-6 6 6"/><path d="M4 20h16"/></svg>
+      <span class="drop-title">Drop a receipt or invoice</span>
+      <span class="caption">PDF, photo, scan or email</span>
+    </label>
+
+    <div class="samples">
+      <span class="caption">Try a sample:</span>
+      <button class="chip" data-sample="dinner">Dinner</button>
+      <button class="chip" data-sample="flight">Flight</button>
+      <button class="chip" data-sample="saas">SaaS</button>
+    </div>
+
+    <a href="/benchmark" id="proof" class="proof hidden">
+      <span><b id="p-ms" class="num">–</b><small>median decision</small></span>
+      <span><b id="p-x" class="num">–</b><small>faster than an LLM</small></span>
+      <span><b id="p-acc" class="num">–</b><small>decision accuracy</small></span>
+      <span class="proof-go">See the benchmark ›</span>
+    </a>
+  </section>
+
+  <section id="how" class="band">
+    <div class="wrap">
+      <h2 class="section-h text-center">One receipt. Four steps. Under a second.</h2>
+      <div class="how">
+        <div class="how-card"><div class="how-n">1</div><h3>Read</h3><p>NDI pulls vendor, date, total, tax and line items from a PDF, photo, scan or email.</p></div>
+        <div class="how-card"><div class="how-n">2</div><h3>Verify</h3><p>Keenable searches the web to check the vendor is a real business.</p></div>
+        <div class="how-card accent"><div class="how-n">3</div><h3>Decide</h3><p>Drex answers 8 typed questions in one call and returns a probability for each.</p></div>
+        <div class="how-card"><div class="how-n">4</div><h3>Explain</h3><p>Only when a receipt is flagged, Qwen writes one plain sentence for the employee.</p></div>
+      </div>
+      <p class="caption text-center built">Built with Intern · Drex · NDI · DeepInfra · Keenable · Adobe Firefly &amp; Express</p>
+    </div>
+  </section>
+
+  <!-- 2. Processing -->
+  <section id="processing" class="screen wrap text-center hidden">
+    <div class="progress"><div id="bar"></div></div>
+    <ol class="steps">
+      <li data-step="0"><span class="tick">✓</span> Reading document</li>
+      <li data-step="1"><span class="tick">✓</span> Checking vendor</li>
+      <li data-step="2"><span class="tick">✓</span> Deciding</li>
+    </ol>
+  </section>
+
+  <!-- 3. Verdict -->
+  <section id="verdict" class="screen wrap hidden">
+    <div class="halo" id="v-halo" aria-hidden="true"></div>
+    <div class="text-center fade" style="position:relative">
+      <div class="verdict-word"><span id="v-dot" class="dot"></span><span id="v-word">Approved</span></div>
+      <p id="v-reason" class="v-reason"></p>
+      <p id="v-meta" class="caption num"></p>
+      <p id="v-mock" class="mock hidden">Mock mode: offline heuristics, not Drex.</p>
+    </div>
+
+    <div class="card receipt fade">
+      <div class="flex justify-between items-baseline gap-4">
+        <span id="r-vendor" class="r-vendor"></span>
+        <span id="r-total" class="r-total num"></span>
+      </div>
+      <div id="r-sub" class="caption"></div>
+      <div id="r-items" class="r-items num"></div>
+    </div>
+
+    <div class="timing fade" id="timing">
+      <div class="timing-bar" id="t-bar"></div>
+      <div class="timing-legend caption num" id="t-legend"></div>
+    </div>
+
+    <h2 class="checks-title fade">Checks</h2>
+    <div id="checks" class="checks fade"></div>
+
+    <p id="v-explain" class="explain fade hidden"></p>
+
+    <div class="actions fade" id="actions">
+      <button class="pill pill-ghost" id="btn-approve">Approve anyway</button>
+      <button class="pill pill-primary" id="btn-back">Send back</button>
+    </div>
+    <div class="text-center mt-10"><button class="link" id="again">Review another receipt</button></div>
+
+    <details class="state fade">
+      <summary class="caption">What Drex saw</summary>
+      <pre id="v-state" class="num"></pre>
+    </details>
+  </section>
+</main>
+
+<div id="toast" class="toast hidden"></div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const show = (id) => {
+  ["home", "processing", "verdict"].forEach(s => $("#" + s).classList.toggle("hidden", s !== id));
+  $("#how").classList.toggle("hidden", id !== "home");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+const WORD = { approve: "Approved", flag: "Flagged", reject: "Rejected" };
+const CATS = { meals: "Meals", travel: "Travel", software: "Software", office: "Office", other: "Other" };
+const CHECKS = [
+  ["over_limit", "Within limit", 0.6],
+  ["non_reimbursable", "No restricted items", 0.7],
+  ["duplicate", "Not a duplicate", 0.7],
+  ["missing_info", "All fields present", 0.6],
+  ["weekend_or_holiday", "Business day", 0.8],
+  ["vendor_unverified", "Vendor verified", 0.7],
+];
+const money = (n, c) => new Intl.NumberFormat("en-US", { style: "currency", currency: c || "USD" }).format(n);
+const RISK = ["Clean", "Low", "Some concern", "High", "Violation"];
+
+function toast(msg) {
+  const t = $("#toast"); t.textContent = msg; t.classList.remove("hidden");
+  setTimeout(() => t.classList.add("hidden"), 2200);
+}
+
+async function run(form) {
+  show("processing");
+  const items = [...document.querySelectorAll(".steps li")];
+  items.forEach(li => li.classList.remove("on", "done"));
+  $("#bar").style.width = "0%";
+  let step = 0;
+  const tick = setInterval(() => {
+    if (step < items.length) { items[step].classList.add("on"); if (step) items[step - 1].classList.add("done"); step++; }
+    $("#bar").style.width = Math.min(90, step * 30) + "%";
+  }, 220);
+  const t0 = performance.now();
+  let res;
+  try {
+    const r = await fetch("/api/review", { method: "POST", body: form });
+    res = await r.json();
+    if (!r.ok) throw new Error(res.detail || r.statusText);
+  } catch (e) {
+    clearInterval(tick); show("home"); toast("Couldn't review that file: " + e.message); return;
+  }
+  // let the three steps finish so the motion reads, then reveal
+  const wait = Math.max(0, 700 - (performance.now() - t0));
+  setTimeout(() => {
+    clearInterval(tick);
+    items.forEach(li => li.classList.add("on", "done"));
+    $("#bar").style.width = "100%";
+    setTimeout(() => render(res), 200);
+  }, wait);
+}
+
+function render(r) {
+  const color = { approve: "var(--approve)", flag: "var(--flag)", reject: "var(--reject)" }[r.decision];
+  $("#v-dot").style.background = color;
+  $("#v-word").textContent = WORD[r.decision];
+  $("#v-reason").textContent = r.reasons.length ? r.reasons.join(" · ") : "Everything checks out.";
+  $("#v-meta").textContent = `Decided in ${Math.round(r.latency_ms)} ms · ${Math.round(r.confidence * 100)}% confident`;
+  $("#v-mock").classList.toggle("hidden", !r.mock);
+
+  const f = r.fields;
+  $("#r-vendor").textContent = f.vendor || "Unknown vendor";
+  $("#r-total").textContent = f.total != null ? new Intl.NumberFormat("en-US", { style: "currency", currency: f.currency || "USD" }).format(f.total) : "—";
+  let d = "No date";
+  if (f.date) { const dt = new Date(f.date + "T12:00:00"); d = dt.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" }); }
+  $("#r-sub").textContent = `${d} · ${CATS[r.answers.category.choice] || "Other"}`;
+
+  const box = $("#checks"); box.innerHTML = "";
+  for (const [k, label, thr] of CHECKS) {
+    if (!r.answers[k]) continue;
+    const p = r.answers[k].noul, bad = p > thr;
+    box.insertAdjacentHTML("beforeend", `
+      <div class="row"><span>${label}</span>
+        <div class="track"><div class="fill ${bad ? "bad" : ""}" data-w="${(p * 100).toFixed(0)}"></div></div>
+        <span class="num pct">${Math.round(p * 100)}%</span>
+        <span class="mark ${bad ? "x" : "ok"}">${bad ? "✕" : "✓"}</span></div>`);
+  }
+  const v = r.vendor_check || {};
+  const vtxt = v.verified === true ? "Found on the web" : v.verified === false ? "Not found on the web" : "Lookup unavailable";
+  if (!r.answers.vendor_unverified)
+    box.insertAdjacentHTML("beforeend", `<div class="row"><span>Vendor verified</span>
+      <span class="wide ${v.verified === false ? "x" : ""}">${v.verified === true ? "✓" : v.verified === false ? "✕" : "–"} ${vtxt}</span></div>`);
+  else
+    box.insertAdjacentHTML("beforeend", `<div class="row sub"><span></span><span class="wide">Web check: ${vtxt}</span></div>`);
+  const lvl = Math.max(0, Math.min(4, Math.round(r.answers.risk.score)));
+  const dots = [0, 1, 2, 3, 4].map(i => `<span class="rdot ${i === lvl ? "on" : ""}"></span>`).join("");
+  box.insertAdjacentHTML("beforeend", `<div class="row"><span>Risk</span><span class="wide">${dots}<span class="ml-3">${RISK[lvl]}</span></span></div>`);
+
+  // line items
+  const items = (f.items || []).map(i => `<div><span>${i.qty}× ${i.desc}</span><span>${i.amount != null ? money(i.amount, f.currency) : ""}</span></div>`).join("");
+  const tax = f.tax != null ? `<div class="muted"><span>Tax</span><span>${money(f.tax, f.currency)}</span></div>` : "";
+  $("#r-items").innerHTML = items ? items + tax : `<div class="muted"><span>No line items found</span><span></span></div>`;
+
+  // where the time went
+  const t = r.timings || {};
+  const segs = [["Read", t.read_ms, "var(--gray)"], ["Verify vendor", t.vendor_ms, "#A1A1A6"], ["Drex decides", r.latency_ms, "var(--accent)"], ["Explain", t.explain_ms, "#BF5AF2"]]
+    .filter(x => x[1] != null && x[1] >= 1);
+  const tot = segs.reduce((a, x) => a + x[1], 0) || 1;
+  $("#t-bar").innerHTML = segs.map(x => `<span style="flex:${x[1] / tot};background:${x[2]}"></span>`).join("");
+  $("#t-legend").innerHTML = segs.map(x => `<span><i style="background:${x[2]}"></i>${x[0]} ${Math.round(x[1]).toLocaleString()} ms</span>`).join("");
+
+  $("#v-halo").style.background = `radial-gradient(closest-side, ${color}, transparent)`;
+
+  const ex = $("#v-explain");
+  ex.classList.toggle("hidden", !r.explanation);
+  ex.textContent = r.explanation ? `“${r.explanation}”` : "";
+  $("#actions").classList.toggle("hidden", r.decision === "approve");
+  $("#v-state").textContent = r.state;
+
+  show("verdict");
+  document.querySelectorAll("#verdict .fade").forEach((el, i) => { el.classList.remove("in"); setTimeout(() => el.classList.add("in"), 60 * i); });
+  requestAnimationFrame(() => setTimeout(() => document.querySelectorAll(".fill").forEach(el => el.style.width = el.dataset.w + "%"), 120));
+}
+
+$("#file").addEventListener("change", (e) => { const f = e.target.files[0]; if (f) { const fd = new FormData(); fd.append("file", f); run(fd); } e.target.value = ""; });
+const drop = $("#drop");
+["dragenter", "dragover"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave", "drop"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", e => { const f = e.dataTransfer.files[0]; if (f) { const fd = new FormData(); fd.append("file", f); run(fd); } });
+document.querySelectorAll("[data-sample]").forEach(b => b.addEventListener("click", () => { const fd = new FormData(); fd.append("sample", b.dataset.sample); run(fd); }));
+fetch("/api/benchmark").then(r => r.ok ? r.json() : null).then(b => {
+  if (!b || b.meta.mock || !b.summary.drex) return;
+  const d = b.summary.drex, h = b.headline || {};
+  $("#p-ms").textContent = Math.round(d.latency_median_ms) + " ms";
+  $("#p-x").textContent = h.speedup ? h.speedup.toFixed(1) + "×" : "–";
+  $("#p-acc").textContent = Math.round(d.decision_accuracy * 100) + "%";
+  $("#proof").classList.remove("hidden");
+}).catch(() => {});
+$("#again").addEventListener("click", () => show("home"));
+$("#btn-approve").addEventListener("click", () => toast("Approved with override. Logged for audit."));
+$("#btn-back").addEventListener("click", () => toast("Sent back to the employee."));
+</script>
+</body>
+</html>
